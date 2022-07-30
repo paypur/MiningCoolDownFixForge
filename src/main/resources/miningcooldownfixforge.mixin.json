@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "me.paypur.miningcooldownfixforge.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "MultiPlayerGameModeMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "miningcooldownfixforge.refmap.json"
+}
