@@ -1,5 +1,6 @@
 package me.paypur.miningcooldownfixforge.mixin;
 
+import me.paypur.miningcooldownfixforge.config.MCDFFCommonConfigs;
 import net.minecraft.client.multiplayer.MultiPlayerGameMode;
 import net.minecraft.world.level.GameType;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,7 +17,7 @@ public class MultiPlayerGameModeMixin {
     @ModifyConstant(method = "continueDestroyBlock", constant = @Constant(intValue = 5))
     private int MiningCooldownFix(int value) {
         if(localPlayerMode.isSurvival()){
-            return 0;
+            return MCDFFCommonConfigs.MINING_DELAY.get();
         }
         else {
             return 5;
