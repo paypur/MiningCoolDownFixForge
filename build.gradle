@@ -2,10 +2,12 @@ buildscript {
     repositories {
         // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
         maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath 'org.spongepowered:mixingradle:0.7.+'
     }
 }
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
@@ -14,9 +16,9 @@ plugins {
     id 'maven-publish'
 }
 apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'org.spongepowered.mixin'
 
-
-version = '1.1'
+version = '1.2'
 group = 'me.paypur.miningcooldownfixforge.MiningCoolDownFixForge' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'MiningCoolDownFixForge'
 
@@ -154,6 +156,9 @@ dependencies {
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.18.2-40.1.68'
 
+    // Apply Mixin AP
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
     // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency
@@ -165,6 +170,12 @@ dependencies {
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+}
+
+mixin {
+    // MixinGradle Settings
+    add sourceSets.main, 'miningcooldownfixforge.refmap.json'
+    config 'miningcooldownfixforge.mixin.json'
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
