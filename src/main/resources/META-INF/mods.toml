@@ -9,35 +9,31 @@ modLoader="javafml" #mandatory
 loaderVersion="[40,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
 # The license for you mod. This is mandatory metadata and allows for easier comprehension of your redistributive properties.
 # Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
-license="MIT"
+license="MIT License"
 # A URL to refer people to when problems occur with this mod
 #issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 # The modid of the mod
-modId="miningcooldownfixforge" #mandatory
-# The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-# ${file.jarVersion} will substitute the value of the Implementation-Version as read from the mod's JAR file metadata
-# see the associated build.gradle script for how to populate this completely automatically during a build
-version="1.2" #mandatory
- # A display name for the mod
-displayName="Mining Cool Down Fix" #mandatory
-# A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
+modId="mcdf" #mandatory
+# The version number of the mod
+version="2.0.0-dev" #mandatory
+# A display name for the mod
+displayName="Mining Cool Down Fix [Forge]" #mandatory
+# A URL to query for updates for this mod. See the JSON update specification https://docs.minecraftforge.net/en/latest/misc/updatechecker/
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
-#displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
+displayURL="https://www.curseforge.com/minecraft/mc-mods/mining-cooldown-fix" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="" #optional
 # A text field displayed in the mod UI
-credits="A forge version of Covenant_Turtle's Mining Cool Down Fix" #optional
+#credits="Thanks for this example mod goes to Java" #optional
 # A text field displayed in the mod UI
 authors="paypur" #optional
 # The description text for the mod (multi line!) (#mandatory)
-description='''
-Covenate_Turtle: By default, the Minecraft client has a hard-coded delay of 300 ms (6 ticks) between breaking blocks, unless your tools, enchantments, and potion effects are strong enough to completely bypass it, as per the following wiki article: https://minecraft.fandom.com/wiki/Breaking#Instant_breaking
-'''
+description='''Covenate_Turtle: By default, the Minecraft client has a hard-coded delay of 300 ms (6 ticks) between breaking blocks, unless your tools, enchantments, and potion effects are strong enough to completely bypass it, as per the following wiki article: https'''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.miningcooldownfixforge]] #optional
+[[dependencies.mcdf]] #optional
     # the modid of the dependency
     modId="forge" #mandatory
     # Does this dependency have to exist - if not, ordering below must be specified
@@ -49,7 +45,7 @@ Covenate_Turtle: By default, the Minecraft client has a hard-coded delay of 300 
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
 # Here's another dependency
-[[dependencies.miningcooldownfixforge]]
+[[dependencies.mcdf]]
     modId="minecraft"
     mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
