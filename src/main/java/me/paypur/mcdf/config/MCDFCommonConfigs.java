@@ -5,10 +5,9 @@ import net.minecraftforge.common.ForgeConfigSpec;
 public class MCDFCommonConfigs {
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec SPEC;
-
     public static final ForgeConfigSpec.IntValue MINING_DELAY;
 
-    static{
+    static {
         BUILDER.push("Mining Cool Down Fix [Forge] common config");
         BUILDER.pop();
 
