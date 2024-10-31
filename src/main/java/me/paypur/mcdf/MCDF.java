@@ -1,9 +1,9 @@
 package me.paypur.mcdf;
 
+import me.paypur.mcdf.tinker.Modifiers;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -25,20 +25,21 @@ public class MCDF {
     public MCDF() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ENCHANTMENTS.register(eventBus);
+        eventBus.register(new Modifiers());
     }
 
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
     public static class ForgeEventHandler {
         @SubscribeEvent(priority = EventPriority.LOWEST)
         public static void breakSpeed(PlayerEvent.BreakSpeed event) {
             // https://intellij-support.jetbrains.com/hc/en-us/community/posts/360007479999/comments/360001541500
 //            GLFW.glfwSetInputMode(Minecraft.getInstance().getWindow().getWindow() , GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-            float destroySpeed =  event.getState().getDestroySpeed(null, null);
-            float breakSpeed = event.getOriginalSpeed();
-            int modifier = ForgeHooks.isCorrectToolForDrops(event.getState(), event.getPlayer()) ? 30 : 100;
-            int level = EnchantmentHelper.getEnchantmentLevel(COOL_DOWN.get(), event.getPlayer());
-            if (destroySpeed * modifier / breakSpeed < level + 1) {
-                event.setNewSpeed(destroySpeed * modifier / (level + 1));
+            float hardness = event.getState().getDestroySpeed(null, null);
+            float breakSpeed = event.getNewSpeed();
+            int multiplier = ForgeHooks.isCorrectToolForDrops(event.getState(), event.getPlayer()) ? 30 : 100;
+            int level = EnchantmentHelper.getItemEnchantmentLevel(COOL_DOWN.get(), event.getPlayer().getMainHandItem());
+            if (hardness * multiplier / (level + 1) < breakSpeed) {
+                event.setNewSpeed(hardness * multiplier / (level + 1));
             }
         }
     }
