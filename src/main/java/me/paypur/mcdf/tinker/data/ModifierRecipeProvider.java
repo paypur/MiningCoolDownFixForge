@@ -6,11 +6,8 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.ItemLike;
 import slimeknights.mantle.recipe.data.IRecipeHelper;
 import slimeknights.tconstruct.common.TinkerTags;
-import slimeknights.tconstruct.library.recipe.modifiers.ModifierMatch;
-import slimeknights.tconstruct.library.recipe.modifiers.adding.IncrementalModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBuilder;
 import slimeknights.tconstruct.library.tools.SlotType;
 
@@ -30,8 +27,9 @@ public class ModifierRecipeProvider extends RecipeProvider implements IRecipeHel
         ModifierRecipeBuilder.modifier(ModifierIds.COOL_DOWN)
                 .setTools(TinkerTags.Items.HARVEST)
                 .addInput(Items.REPEATER)
+                .addInput(Items.BLUE_ICE)
                 .setMaxLevel(5)
-                .setSlots(SlotType.UPGRADE, 1)
+//                .setSlots(SlotType.UPGRADE, 1)
                 .saveSalvage(consumer, prefix(ModifierIds.COOL_DOWN, upgradeSalvage))
                 .save(consumer, prefix(ModifierIds.COOL_DOWN, upgradeFolder));
     }

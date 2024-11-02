@@ -1,4 +1,8 @@
 {
   "enchantment.mcdf.cooldown": "Cooldown",
-  "enchantment.mcdf.cooldown.desc": "Slows down mining to take a minimum of (1 + level) ticks"
+  "enchantment.mcdf.cooldown.desc": "Slows down mining to take a minimum of (1 + level) ticks",
+
+  "modifier.mcdf.cooldown": "Cooldown",
+  "modifier.mcdf.cooldown.flavor": "Not so fast",
+  "modifier.mcdf.cooldown.description": "Slows down mining to take a minimum of (1 + level) ticks"
 }

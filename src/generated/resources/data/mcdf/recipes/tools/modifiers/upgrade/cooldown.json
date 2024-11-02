@@ -3,13 +3,13 @@
   "inputs": [
     {
       "item": "minecraft:repeater"
+    },
+    {
+      "item": "minecraft:blue_ice"
     }
   ],
   "tools": {
     "tag": "tconstruct:modifiable/harvest"
-  },
-  "slots": {
-    "upgrades": 1
   },
   "allow_crystal": true,
   "result": {

@@ -3,9 +3,6 @@
   "tools": {
     "tag": "tconstruct:modifiable/harvest"
   },
-  "slots": {
-    "upgrades": 1
-  },
   "modifier": "mcdf:cooldown",
   "min_level": 1
 }

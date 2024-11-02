@@ -1,0 +1,15 @@
+{
+    "modifier_id": "mcdf:cooldown",
+    "text": [
+        {
+            "text": "Slows down mining to take a minimum of (1 + level) ticks."
+        }
+    ],
+    "more_text_space": true,
+    "effects": [
+        "Maximum of 5 levels",
+        "Multi-use",
+        "Slotless"
+    ]
+}
+

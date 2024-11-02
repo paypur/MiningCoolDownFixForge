@@ -14,7 +14,7 @@ import slimeknights.tconstruct.library.json.variable.mining.MiningSpeedVariable;
 
 import static me.paypur.mcdf.MCDF.MOD_ID;
 
-public class Modifiers {
+public class TinkersEvents {
 
     @SubscribeEvent
     void gatherData(final GatherDataEvent event) {

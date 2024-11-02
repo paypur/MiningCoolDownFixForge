@@ -16,7 +16,7 @@ public class ModifierTagProvider extends AbstractModifierTagProvider {
 
     @Override
     protected void addTags() {
-        this.tag(UPGRADES).add(ModifierIds.COOL_DOWN);
+        this.tag(GENERAL_SLOTLESS).add(ModifierIds.COOL_DOWN);
     }
 
     @Override
