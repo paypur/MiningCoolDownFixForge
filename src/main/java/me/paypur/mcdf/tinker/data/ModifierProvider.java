@@ -1,7 +1,7 @@
 package me.paypur.mcdf.tinker.data;
 
 import me.paypur.mcdf.tinker.ModifierIds;
-import me.paypur.mcdf.tinker.variable.MiningMulti;
+import me.paypur.mcdf.tinker.variable.MiningVariables;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import slimeknights.tconstruct.library.data.tinkering.AbstractModifierProvider;
@@ -9,7 +9,6 @@ import slimeknights.tconstruct.library.json.math.ModifierFormula;
 import slimeknights.tconstruct.library.json.variable.block.BlockVariable;
 import slimeknights.tconstruct.library.json.variable.mining.BlockMiningSpeedVariable;
 import slimeknights.tconstruct.library.modifiers.modules.mining.ConditionalMiningSpeedModule;
-
 
 
 public class ModifierProvider extends AbstractModifierProvider implements IConditionBuilder {
@@ -25,7 +24,8 @@ public class ModifierProvider extends AbstractModifierProvider implements ICondi
                 .addModule(ConditionalMiningSpeedModule.builder()
                         // TODO: invert haste multiplier
                         .customVariable("hardness", new BlockMiningSpeedVariable(BlockVariable.HARDNESS, 1))
-                        .customVariable("multi", MiningMulti.DEFAULT)
+                        .customVariable("multi", MiningVariables.MINING_MULTI)
+                        .customVariable("haste", MiningVariables.HASTE_LEVEL)
                         .formula()
                         .customVariable("hardness")
                         .customVariable("multi")
@@ -35,6 +35,8 @@ public class ModifierProvider extends AbstractModifierProvider implements ICondi
                         .add()
                         .divide()
                         .variable(ModifierFormula.VALUE)
+                        .customVariable("haste")
+                        .divide()
                         .min()
                         .build()
                 );

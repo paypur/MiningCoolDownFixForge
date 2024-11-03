@@ -16,7 +16,8 @@
           "block_type": "tconstruct:hardness",
           "fallback": 1.0
         },
-        "multi": "mcdf:mining_multi"
+        "multi": "mcdf:mining_multi",
+        "haste": "mcdf:haste_level"
       },
       "formula": [
         "$hardness",
@@ -27,6 +28,8 @@
         "+",
         "/",
         "$speed",
+        "$haste",
+        "/",
         "min"
       ]
     }

@@ -3,7 +3,7 @@ package me.paypur.mcdf.tinker;
 import me.paypur.mcdf.tinker.data.ModifierProvider;
 import me.paypur.mcdf.tinker.data.ModifierRecipeProvider;
 import me.paypur.mcdf.tinker.data.ModifierTagProvider;
-import me.paypur.mcdf.tinker.variable.MiningMulti;
+import me.paypur.mcdf.tinker.variable.MiningVariables;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -28,7 +28,8 @@ public class TinkersEvents {
 
     @SubscribeEvent
     void registerSerializers(RegistryEvent.Register<RecipeSerializer<?>> event) {
-        MiningSpeedVariable.LOADER.register(new ResourceLocation(MOD_ID, "mining_multi"), MiningMulti.DEFAULT.getLoader());
+        MiningSpeedVariable.LOADER.register(new ResourceLocation(MOD_ID, "mining_multi"), MiningVariables.MINING_MULTI.getLoader());
+        MiningSpeedVariable.LOADER.register(new ResourceLocation(MOD_ID, "haste_level"), MiningVariables.HASTE_LEVEL.getLoader());
     }
 
 }
