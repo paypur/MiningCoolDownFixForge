@@ -25,9 +25,15 @@ public class ForgeEventHandler {
         // https://intellij-support.jetbrains.com/hc/en-us/community/posts/360007479999/comments/360001541500
 //            GLFW.glfwSetInputMode(Minecraft.getInstance().getWindow().getWindow() , GLFW_CURSOR, GLFW_CURSOR_NORMAL);
         float hardness = event.getState().getDestroySpeed(null, null);
+
+        if (hardness == 0f) {
+            return;
+        }
+
         float breakSpeed = event.getNewSpeed();
         int multiplier = ForgeHooks.isCorrectToolForDrops(event.getState(), event.getPlayer()) ? 30 : 100;
         int level = EnchantmentHelper.getItemEnchantmentLevel(COOLDOWN.get(), event.getPlayer().getMainHandItem());
+
         if (hardness * multiplier / (level + 1) < breakSpeed) {
             event.setNewSpeed(hardness * multiplier / (level + 1));
         }

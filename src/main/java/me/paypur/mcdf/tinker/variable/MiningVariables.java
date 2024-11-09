@@ -30,16 +30,16 @@ public class MiningVariables {
     );
 
     public static final MiningSpeedVariable HASTE_LEVEL = GenericLoaderRegistry.SingletonLoader.singleton(loader -> new MiningSpeedVariable() {
-                @Override
-                public GenericLoaderRegistry.IGenericLoader<? extends MiningSpeedVariable> getLoader() {
-                    return loader;
-                }
-
-                @Override
-                public float getValue(IToolStackView tool, @Nullable PlayerEvent.BreakSpeed event, @Nullable Player player, @Nullable Direction sideHit) {
-                    return player != null ? 1.1f * ModifierUtil.getTotalModifierFloat(player, HasteModifier.HASTE) : 0;
-                }
+            @Override
+            public GenericLoaderRegistry.IGenericLoader<? extends MiningSpeedVariable> getLoader() {
+                return loader;
             }
+
+            @Override
+            public float getValue(IToolStackView tool, @Nullable PlayerEvent.BreakSpeed event, @Nullable Player player, @Nullable Direction sideHit) {
+                return player != null ? 1.1f * ModifierUtil.getTotalModifierFloat(player, HasteModifier.HASTE) : 0;
+            }
+        }
     );
 
 }
