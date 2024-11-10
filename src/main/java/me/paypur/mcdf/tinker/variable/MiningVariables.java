@@ -37,7 +37,8 @@ public class MiningVariables {
 
             @Override
             public float getValue(IToolStackView tool, @Nullable PlayerEvent.BreakSpeed event, @Nullable Player player, @Nullable Direction sideHit) {
-                return player != null ? 1.1f * ModifierUtil.getTotalModifierFloat(player, HasteModifier.HASTE) : 0;
+                float haste = ModifierUtil.getTotalModifierFloat(player, HasteModifier.HASTE);
+                return (haste > 0) ? 1.1f * haste : 1;
             }
         }
     );

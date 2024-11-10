@@ -13,11 +13,6 @@ public class CooldownEnchantment extends DiggingEnchantment {
     }
 
     @Override
-    public int getMaxLevel() {
-        return 5;
-    }
-
-    @Override
     public boolean isTreasureOnly() {
         return true;
     }

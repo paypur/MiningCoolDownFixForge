@@ -22,7 +22,6 @@ public class ModifierProvider extends AbstractModifierProvider implements ICondi
         buildModifier(ModifierIds.COOL_DOWN)
                 .priority(-10000)
                 .addModule(ConditionalMiningSpeedModule.builder()
-                        // TODO: invert haste multiplier
                         .customVariable("hardness", new BlockMiningSpeedVariable(BlockVariable.HARDNESS, 1))
                         .customVariable("multi", MiningVariables.MINING_MULTI)
                         .customVariable("haste", MiningVariables.HASTE_LEVEL)
