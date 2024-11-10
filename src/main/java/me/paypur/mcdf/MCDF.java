@@ -24,9 +24,9 @@ public class MCDF {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
 
-        forgeEventBus.register(new ForgeEventHandler());
-
         ENCHANTMENTS.register(modEventBus);
+
+        forgeEventBus.register(new ForgeEventHandler());
 
         if (ModList.get().isLoaded(TCON_ID)) {
             modEventBus.register(new TinkersEvents());
