@@ -109,13 +109,6 @@ repositories {
     // Put repositories for dependencies here
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
 
-    maven { // location of the maven that hosts JEI files since January 2023
-        url "https://maven.blamejared.com/"
-    }
-    maven { // tcon
-        url "https://dvs1.progwml6.com/files/maven"
-    }
-
     // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
     // flatDir {
     //     dir 'libs'
@@ -130,13 +123,6 @@ dependencies {
 
     // Apply Mixin AP
     annotationProcessor 'org.spongepowered:mixin:0.8.7:processor'
-
-    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
-
-    compileOnly fg.deobf("slimeknights.mantle:Mantle:${minecraft_version}-${mantle_version}")
-    runtimeOnly fg.deobf("slimeknights.mantle:Mantle:${minecraft_version}-${mantle_version}")
-    compileOnly fg.deobf("slimeknights.tconstruct:TConstruct:${minecraft_version}-${tconstruct_version}")
-    runtimeOnly fg.deobf("slimeknights.tconstruct:TConstruct:${minecraft_version}-${tconstruct_version}")
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
@@ -211,13 +197,7 @@ tasks.named('processResources', ProcessResources).configure {
             mod_license: mod_license,
             mod_version: mod_version,
             mod_authors: mod_authors,
-            mod_description: mod_description,
-            mantle_version: mantle_version,
-            tconstruct_version: tconstruct_version,
-            jei_version: jei_version,
-            mantle_range: mantle_range,
-            tconstruct_range: tconstruct_range,
-            jei_range: jei_range
+            mod_description: mod_description
     ]
 
     inputs.properties replaceProperties

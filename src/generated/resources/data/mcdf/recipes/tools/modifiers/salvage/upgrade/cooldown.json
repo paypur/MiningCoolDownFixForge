@@ -1,7 +1,0 @@
-{
-  "type": "tconstruct:modifier_salvage",
-  "modifier": "mcdf:cooldown",
-  "tools": {
-    "tag": "tconstruct:modifiable/harvest"
-  }
-}
