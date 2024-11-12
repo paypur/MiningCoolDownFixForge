@@ -18,7 +18,7 @@ public class MCDF {
     public static final String MOD_ID = "mcdf";
     public static final String TCON_ID = "tconstruct";
     public static final DeferredRegister<Enchantment> ENCHANTMENTS = DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, MOD_ID);
-    public static final RegistryObject<Enchantment> COOLDOWN = ENCHANTMENTS.register("cooldown", () -> new CooldownEnchantment(Enchantment.Rarity.VERY_RARE, EquipmentSlot.MAINHAND));
+    public static final RegistryObject<Enchantment> COOLDOWN = ENCHANTMENTS.register("cooldown", () -> new CooldownEnchantment(Enchantment.Rarity.RARE, EquipmentSlot.MAINHAND));
 
     public MCDF() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -26,7 +26,7 @@ public class MCDF {
 
         ENCHANTMENTS.register(modEventBus);
 
-        forgeEventBus.register(new ForgeEventHandler());
+        forgeEventBus.register(new ForgeEvents());
 
         if (ModList.get().isLoaded(TCON_ID)) {
             modEventBus.register(new TinkersEvents());
