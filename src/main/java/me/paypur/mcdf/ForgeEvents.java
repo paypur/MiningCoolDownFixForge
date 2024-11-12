@@ -1,6 +1,5 @@
 package me.paypur.mcdf;
 
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -19,8 +18,8 @@ public class ForgeEvents {
         }
 
         float breakSpeed = event.getNewSpeed();
-        int multiplier = ForgeHooks.isCorrectToolForDrops(event.getState(), event.getPlayer()) ? 30 : 100;
-        int level = EnchantmentHelper.getItemEnchantmentLevel(COOLDOWN.get(), event.getPlayer().getMainHandItem());
+        int multiplier = ForgeHooks.isCorrectToolForDrops(event.getState(), event.getEntity()) ? 30 : 100;
+        int level = event.getEntity().getMainHandItem().getEnchantmentLevel(COOLDOWN.get());
 
         if (hardness * multiplier / (level + 1) < breakSpeed) {
             event.setNewSpeed(hardness * multiplier / (level + 1));

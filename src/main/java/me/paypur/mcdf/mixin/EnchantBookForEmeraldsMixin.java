@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class EnchantBookForEmeraldsMixin {
 
     @Redirect(
-            method = "getOffer(Lnet/minecraft/world/entity/Entity;Ljava/util/Random;)Lnet/minecraft/world/item/trading/MerchantOffer;",
+            method = "getOffer(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/item/trading/MerchantOffer;",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/world/item/enchantment/Enchantment;getMinLevel()I"
@@ -24,7 +24,7 @@ public class EnchantBookForEmeraldsMixin {
     }
 
     @Redirect(
-            method = "getOffer(Lnet/minecraft/world/entity/Entity;Ljava/util/Random;)Lnet/minecraft/world/item/trading/MerchantOffer;",
+            method = "getOffer(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/item/trading/MerchantOffer;",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/world/item/enchantment/Enchantment;getMaxLevel()I"
@@ -35,7 +35,7 @@ public class EnchantBookForEmeraldsMixin {
     }
 
     @ModifyArg(
-            method = "getOffer(Lnet/minecraft/world/entity/Entity;Ljava/util/Random;)Lnet/minecraft/world/item/trading/MerchantOffer;",
+            method = "getOffer(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/item/trading/MerchantOffer;",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/world/item/enchantment/EnchantmentInstance;<init>(Lnet/minecraft/world/item/enchantment/Enchantment;I)V"
@@ -46,7 +46,7 @@ public class EnchantBookForEmeraldsMixin {
         return pEnchantment.equals(MCDF.COOLDOWN.get()) ? 1 : pLevel;
     }
 
-    @Redirect(method = "getOffer(Lnet/minecraft/world/entity/Entity;Ljava/util/Random;)Lnet/minecraft/world/item/trading/MerchantOffer;",
+    @Redirect(method = "getOffer(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/item/trading/MerchantOffer;",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/world/item/enchantment/Enchantment;isTreasureOnly()Z"

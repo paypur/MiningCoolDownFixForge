@@ -1,24 +1,9 @@
 {
   "type": "tconstruct:composable",
   "level_display": "tconstruct:default",
-  "tooltip_display": "always",
-  "priority": -10000,
   "modules": [
     {
       "type": "tconstruct:conditional_mining_speed",
-      "blocks": "mantle:any",
-      "entity": "mantle:any",
-      "require_effective": true,
-      "percent": false,
-      "variables": {
-        "hardness": {
-          "type": "tconstruct:block",
-          "block_type": "tconstruct:hardness",
-          "fallback": 1.0
-        },
-        "multi": "mcdf:mining_multi",
-        "haste": "mcdf:haste_level"
-      },
       "formula": [
         "$hardness",
         "$multi",
@@ -31,7 +16,20 @@
         "$haste",
         "/",
         "min"
-      ]
+      ],
+      "percent": false,
+      "require_effective": true,
+      "variables": {
+        "hardness": {
+          "type": "tconstruct:block",
+          "block_type": "tconstruct:hardness",
+          "fallback": 1.0
+        },
+        "haste": "mcdf:haste_level",
+        "multi": "mcdf:mining_multi"
+      }
     }
-  ]
+  ],
+  "priority": -10000,
+  "tooltip_display": "always"
 }

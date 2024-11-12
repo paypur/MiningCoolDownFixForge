@@ -1,5 +1,6 @@
 {
   "type": "tconstruct:modifier",
+  "allow_crystal": true,
   "inputs": [
     {
       "item": "minecraft:repeater"
@@ -8,13 +9,11 @@
       "item": "minecraft:blue_ice"
     }
   ],
+  "level": {
+    "max": 5
+  },
+  "result": "mcdf:cooldown",
   "tools": {
     "tag": "tconstruct:modifiable/harvest"
-  },
-  "allow_crystal": true,
-  "result": {
-    "name": "mcdf:cooldown",
-    "level": 1
-  },
-  "max_level": 5
+  }
 }
