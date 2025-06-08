@@ -1,9 +1,8 @@
 {
     "required": true,
     "package": "me.paypur.mcdf.mixin",
-    "compatibilityLevel": "JAVA_17",
+    "compatibilityLevel": "JAVA_21",
     "mixins": [
-        "EnchantBookForEmeraldsMixin",
         "MultiPlayerGameModeMixin"
     ],
     "injectors": {
