@@ -1,9 +1,11 @@
 package me.paypur.mcdf;
 
+import me.paypur.mcdf.tinker.TinkersEvents;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -24,6 +26,10 @@ public class MCDF {
         ENCHANTMENTS.register(modEventBus);
 
         forgeEventBus.register(new ForgeEvents());
+
+        if (ModList.get().isLoaded("tconstruct")) {
+            modEventBus.register(new TinkersEvents());
+        }
     }
 
 }
