@@ -1,0 +1,46 @@
+name: 'Build Release'
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: ${{ contains(github.event.head_commit.message, 'Release') }}
+    steps:
+      - name: 'Checkout branch'
+        uses: actions/checkout@v4
+      - name: 'Gradle Properties'
+        run: |
+          cat gradle.properties | while read -r line; do
+            if [[ $line =~ [a-z]*=.*$ ]]; then
+              echo "$line" >> "$GITHUB_ENV"
+              fi
+          done
+      - name: 'Set up JDK 17'
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+      - name: 'Setup Gradle'
+        uses: gradle/actions/setup-gradle@v4
+      - name: 'Cached Build with Gradle'
+        uses: burrunan/gradle-cache-action@v1
+        with:
+          job-id: jdk17
+          arguments: build
+      - name: 'Upload to CurseForge'
+        uses: itsmeow/curseforge-upload@v3
+        with:
+          token: '${{ secrets.CF_API_TOKEN }}'
+          project_id: '653147'
+          file_path: 'build/libs/mcdf-${{ env.minecraft_version }}-${{ env.mod_version }}.jar'
+          game_endpoint: 'minecraft'
+          game_versions: 'Minecraft ${{ env.minecraft_version }},Java 17,Forge'
+      - name: 'Upload to Modrinth'
+        uses: cloudnode-pro/modrinth-publish@v2
+        with:
+          token: '${{ secrets.MODRINTH_TOKEN }}'
+          project: 'XLeaJZ8q'
+          files: 'build/libs/mcdf-${{ env.minecraft_version }}-${{ env.mod_version }}.jar'
+          name: 'Mining Cooldown Fix ${{ env.minecraft_version }}-${{ env.mod_version }}'
+          version: '${{ env.mod_version }}'
+          loaders: '["forge", "neoforge"]'
+          game-versions: '${{ env.minecraft_version }}'
